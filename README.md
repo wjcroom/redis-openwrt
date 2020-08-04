@@ -3,11 +3,11 @@ makefile  for  openwrt    compile
 
 ## 大致过程
 
-*1. 准备操作系统，网上很多ubuntu的，我使用的阿里云centos7 ,某个免费镜像，yum是阿里的地址，全部依赖几乎可以。 
-*2. 下载openwrt 或lean的lede  。都是19.07.推荐[gitee lede 最新](https://gitee.com/ewewgit/lean-lede)
+1. 准备操作系统，网上很多ubuntu的，我使用的阿里云centos7 ,某个免费镜像，yum是阿里的地址，全部依赖几乎可以。 
+2. 下载openwrt 或lean的lede  。都是19.07.推荐[gitee lede 最新](https://gitee.com/ewewgit/lean-lede)
 更新feed src 查看文件feeds.conf.default ：[package src sample](https://gitee.com/tqizhe/ledepackages?_from=gitee_search)
 make基本正常。需要若干小时，第一次make j1  V=s 很慢很慢。
-*3. 试试helloworld 生成ipk
+3. 试试helloworld 生成ipk
 
 *4. redis Makefile使用方法：在package目录建立redis目录，将Makefile放入，再redis下建立src目录。放入解压后在redis源码。
 运行命令 make package/redis/complile j1  V=s 
@@ -36,9 +36,9 @@ endef
 ```
 
 ## bin使用说明：
-1.提供一个 ar71XX   mips的bin文件6.0.4  ，可执行文件及ipk安装文件。
-使用说明，ipk安装后，被放入bin目录，ssh，控制台直接输入指令，redis-server，可以运行，按照默认参数。redis-cli  set h h。可以调试。
-如果有libatomic依赖的错，可以opkg install ibatomic。
-2.二进制文件是19.07的openwrt，mips24k版本，拷贝到路由，修改权限 chmon 755 。ln -s  path   bin 
+1. ipk 平台ar71XX   mips  openwrt 19.07， 版本号 6.0.4  
+使用说明，ipk安装后，被放入bin目录，ssh，控制台直接输入指令，redis-server，可以运行，按照默认参数，可以使用redid.conf定制。redis-cli  set h h。可以调试。
+如果有libatomic依赖的报错，可以opkg install ibatomic。
+2. 二进制文件是19.07的openwrt，mips24k版本，拷贝到路由，修改权限 chmon 755 。ln -s  path/file   bin/file 
 起到同样作用。
 
