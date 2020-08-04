@@ -4,7 +4,7 @@ makefile  for  openwrt    compile
 
 
 
-## 大致过程
+# 大致过程
 
 1. 准备操作系统，网上很多ubuntu的，我使用的阿里云centos7 ,某个免费镜像，yum是阿里的地址，全部依赖几乎可以。 
 2. 下载openwrt 或lean的lede  。都是19.07.推荐[gitee lede 最新](https://gitee.com/ewewgit/lean-lede)
