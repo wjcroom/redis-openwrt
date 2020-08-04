@@ -32,7 +32,7 @@ redis6.04，redis5.0 都有的错，决办法 在本平台gcc后加入 -latomic 
 [参考网址](https://blog.csdn.net/mxgsgtc/article/details/53054737)
 
 ### 最关键的定义
-```js
+```sh
 define Build/Compile
  $(MAKE) -C $(PKG_BUILD_DIR)    $(TARGET_CONFIGURE_OPTS)  CC="mips-openwrt-linux-musl-gcc  -latomic " \
 CFLAGS="$(TARGET_CFLAGS)  -I$(LINUX_DIR)/include" MALLOC=libc 
