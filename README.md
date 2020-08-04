@@ -4,7 +4,7 @@ makefile  for  openwrt    compile
 
 
 
-# 大致过程
+### 大致过程
 
 1. 准备操作系统，网上很多ubuntu的，我使用的阿里云centos7 ,某个免费镜像，yum是阿里的地址，全部依赖几乎可以。 
 2. 下载openwrt 或lean的lede  。都是19.07.推荐[gitee lede 最新](https://gitee.com/ewewgit/lean-lede)
@@ -18,7 +18,7 @@ make基本正常。需要若干小时，第一次make j1  V=s 很慢很慢。
 感谢 本redis编译主要[借鉴这个网址]
 (https://blog.csdn.net/mxgsgtc/article/details/53054737)
 
-## 错误列表：
+### 错误列表
 1. Compile error : undefined reference to‘__atomic_fetch_add_4’
 redis6.04，redis5.0 都有的错，决办法 在本平台gcc后加入 -latomic 参数。
 加入方法Makefile中覆盖了 CC这个参数，这样就都正常了，我还想知道其他办法，请高手提示。
@@ -31,10 +31,11 @@ redis6.04，redis5.0 都有的错，决办法 在本平台gcc后加入 -latomic 
  添加 MALLOC=libc 
 [参考网址](https://blog.csdn.net/mxgsgtc/article/details/53054737)
 
-## 最关键的定义：
-```sh
+### 最关键的定义
+```js
 define Build/Compile
-$(MAKE) -C $(PKG_BUILD_DIR)    $(TARGET_CONFIGURE_OPTS)  CC="mips-openwrt-linux-musl-gcc  -latomic "   CFLAGS="$(TARGET_CFLAGS)  -I$(LINUX_DIR)/include" MALLOC=libc 
+ $(MAKE) -C $(PKG_BUILD_DIR)    $(TARGET_CONFIGURE_OPTS)  CC="mips-openwrt-linux-musl-gcc  -latomic " \
+CFLAGS="$(TARGET_CFLAGS)  -I$(LINUX_DIR)/include" MALLOC=libc 
 endef
 ```
 
