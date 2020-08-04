@@ -23,11 +23,10 @@ redis6.04，redis5.0 都有的错，决办法 在本平台gcc后加入 -latomic 
 参考网址https://blog.csdn.net/mxgsgtc/article/details/53054737
 
 下面是其中最关键的定义：
-[code]
 define Build/Compile
 $(MAKE) -C $(PKG_BUILD_DIR)    $(TARGET_CONFIGURE_OPTS)  CC="mips-openwrt-linux-musl-gcc  -latomic "   CFLAGS="$(TARGET_CFLAGS)  -I$(LINUX_DIR)/include" MALLOC=libc 
 endef
-[/code]
+
 bin使用说明：
 提供一个 ar71XX   mips的bin文件6.0.4  ，可执行文件及ipk安装文件。
 使用说明，ipk安装后，被放入bin目录，ssh，控制台直接输入指令，redis-server，可以运行，按照默认参数。redis-cli  set h h。可以调试。
