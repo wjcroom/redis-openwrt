@@ -31,7 +31,10 @@ define Package/redis/install
 	$(INSTALL_DIR) $(1)/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/redis-server  $(1)/bin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/redis-cli  $(1)/bin/
-
+	$(INSTALL_DIR) $(1)/etc
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/src/$(PKG_NAME).conf $(1)/etc/$(PKG_NAME).conf
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/$(PKG_NAME).init $(1)/etc/init.d/$(PKG_NAME)
 
 endef
 
