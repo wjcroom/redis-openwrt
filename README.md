@@ -9,11 +9,11 @@ makefile  for  openwrt    compile
 1. 准备操作系统，网上很多ubuntu的，我使用的阿里云centos7 ,某个免费镜像，yum是阿里的地址，全部依赖几乎可以。 
 2. 下载openwrt 或lean的lede  。都是19.07.推荐[gitee lede 最新](https://gitee.com/ewewgit/lean-lede)
 更新feed src 查看文件feeds.conf.default ：[package src sample](https://gitee.com/tqizhe/ledepackages?_from=gitee_search)
-make基本正常。需要若干小时，第一次make j1  V=s 很慢很慢。
+make基本正常。需要若干小时，第一次make -j1  V=s 很慢很慢。
 3. 试试helloworld 生成ipk
 
 4. redis Makefile使用方法：在package目录建立redis目录，将Makefile放入，再redis下建立src目录。放入解压后在redis源码。
-运行命令 make package/redis/complile j1  V=s 
+运行命令 make package/redis/complile -j1  V=s 
 
 感谢 本redis编译主要[借鉴这个网址]
 (https://blog.csdn.net/mxgsgtc/article/details/53054737)
